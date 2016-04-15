@@ -76,6 +76,7 @@ app.put('/api/events/:id', function (req, res, next) {
   var id = req.params.id;
   console.log(id);
 
+  if(req.body.name != null && req.body.zip != null && req.body.email != null){
     Event.update(
 	  	{_id: id},
 	    {name: req.body.name,
@@ -87,6 +88,7 @@ app.put('/api/events/:id', function (req, res, next) {
 		}, function (err, events) {
         res.json(events);
         });
+  }
 });
 
 app.listen(port, function(){

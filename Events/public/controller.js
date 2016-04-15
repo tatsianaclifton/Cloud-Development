@@ -85,25 +85,19 @@ app.controller('EditCtrl', function($scope, $http, dataShare){
 	    //console.log(events);
 
 		$scope.update = function(){
-        	//console.log(events);
-        	name = $scope.events.name;
-		    zip = $scope.events.zip;
-	        email =$scope.events.email;
-        	if( name != null && zip != null && email != null){
-            $http.put('http://52.38.126.224:9090/api/events/' + $scope.events._id, $scope.events)
-            .success(function(response) {
-            	//var name = $scope.events.name;
-				//var zip = $scope.events.zip;
-	            //var email =$scope.events.email;
-	            //if( name != null && zip != null && email != null){
-	            	$scope.updated = "The event was updated";
-	            //}
-	            //else{
-	            	//$scope.updated = "The event was not updated";
-	            //}
-            })
-        }
-};
+        	$http.put('http://52.38.126.224:9090/api/events/' + $scope.events._id, $scope.events)
+	            .success(function(response) {
+	            	//var name = $scope.events.name;
+					//var zip = $scope.events.zip;
+		            //var email =$scope.events.email;
+		            //if( name != null && zip != null && email != null){
+		            $scope.updated = "The event was updated";
+		            //}
+		            //else{
+		            	//$scope.updated = "The event was not updated";
+		            //}
+	            })
+        };
 });
 
 
