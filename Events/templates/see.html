@@ -1,0 +1,31 @@
+ <div id="events" ng-controller="SeeCtrl">
+
+<table class="table table-striped">
+<thead>
+	<th>Name</th>
+    <th>Zip</th>
+    <th>Contact Email</th>
+    <th>Inddor/Outdoor</th>
+    <th>Free</th>
+    <th>Event Url</th>
+    <th>Operations</th>
+</thead>
+<tbody>
+	<tr ng-repeat="event in events">
+		<td>{{event.name}}</td>
+		<td>{{event.zip}}</td>
+		<td>{{event.email}}</td>
+		<td>{{event.kind}}</td>
+		<td>{{event.free}}</td>
+		<td>{{event.url}}</td>
+		<td>
+        <div class="button-group">
+          <button class="btn btn-danger" ng-click="remove(event._id)">Remove</button>
+          <button class="btn btn-warning" ng-click="edit(event._id)">Edit</button>
+        </div>
+      </td>
+	</tr>
+</tbody>
+</table>
+
+</div>

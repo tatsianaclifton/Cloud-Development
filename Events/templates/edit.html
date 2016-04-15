@@ -1,0 +1,42 @@
+<div class="container" ng-controller="EditCtrl">
+    <h1>Edit This Event</h1>
+
+    <h2>{{updated}}</h2>
+
+    <form role="form">
+
+        <div class="form-group required">  
+          <label for="name" class="control-label">Name</label> 
+                <input type="text" id="name" class="form-control" ng-model="events.name" value="{{events.name}}" required>
+        </div>
+
+        <div class="form-group required">
+          <label for="zip" class="control-label">Zip</label>
+                  <input type="number" id="zip" class="form-control" ng-model="events.zip" value="{{events.zip}}" required>
+        </div>
+
+        <div class="form-group required">
+          <label for="email" class="control-label">Contact Email</label>
+                  <input type="email" id="email" class="form-control" ng-model="events.email" value="{{events.email}}"required>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Indoor/Outdoor</label>
+                  <input type="radio" id="indoor" name="kind" value="indoor" class="form-control" ng-model="events.kind"><div class="text-center">Indoor</div>
+                  <input type="radio" id="outdoor" name="kind" value="outdoor" class="form-control" ng-model="events.kind"><div class="text-center">Outdoor</div>
+        </div>
+          
+         <div class="form-group">
+          <label for="free" class="control-label">Free Event</label>        
+                  <input type="checkbox" value="true" name="free" class="form-control" ng-model="events.free">
+         </div>
+
+          <div class="form-group">
+            <label class="control-label">Event URL</label>
+                  <input type="text" class="form-control" ng-model="events.url" value="{{events.url}}">
+          </div>
+
+          <input type="submit" class="btn btn-primary" ng-click="update()" value="Update"/>
+     </form>
+
+</div>
