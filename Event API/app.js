@@ -8,7 +8,7 @@ var eventController = require('./controllers/event');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
 
-mongoose.connect('mongodb://events:events@ds021010.mlab.com:21010/events', function(){
+mongoose.connect('', function(){
 	console.log('mongodb connected');
 });
 
