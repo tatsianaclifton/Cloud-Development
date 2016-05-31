@@ -12,6 +12,54 @@ exports.getEvent = function (req, res, next){
 	});
 };
 
+//get all events that has particular owner, end point /api/events/users/:owner_id
+exports.getEventsUser = function (req, res, next){
+	
+	var owner_id = req.params.owner_id;
+	console.log(owner_id);
+
+	Event.find({'owner_id': owner_id}, function (err, events){
+		if(err) return next(err);
+		res.json(events);
+	});
+};
+
+//get events by zip, end point /api/zip/:event_zip
+exports.getEventZip = function (req, res, next){
+	
+	var zip = req.params.event_zip;
+	console.log(zip);
+
+	Event.find({'address.zip': zip}, function (err, event){
+		if(err) return next(err);
+		res.json(event);
+	});
+};
+
+//get events by zip, end point /api/zip/:event_zip
+exports.getEventName = function (req, res, next){
+	
+	var name = req.params.event_name;
+	console.log(name);
+
+	Event.find({'name': name}, function (err, event){
+		if(err) return next(err);
+		res.json(event);
+	});
+};
+
+//get events by city, end point /api/city/:event_city
+exports.getEventCity = function (req, res, next){
+	
+	var city = req.params.event_city;
+	console.log(city);
+
+	Event.find({'address.city': city}, function (err, event){
+		if(err) return next(err);
+		res.json(event);
+	});
+};
+
 //get all events, end point /api/events
 exports.getEvents =  function(req, res, next){
 

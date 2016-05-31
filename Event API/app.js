@@ -8,7 +8,7 @@ var eventController = require('./controllers/event');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
 
-mongoose.connect('', function(){
+mongoose.connect('mongodb://events:events@ds021010.mlab.com:21010/events', function(){
 	console.log('mongodb connected');
 });
 
@@ -40,13 +40,29 @@ router.route('/events/:event_id')
 	.put(authController.isAuthenticated, eventController.putEvent)
 	.delete(authController.isAuthenticated, eventController.deleteEvent);
 
+//endpoint handlers for /events/user/:owner_id
+router.route('/events/users/:owner_id')
+	.get(authController.isAuthenticated, eventController.getEventsUser);
+
+//endpoint handlers for /events/:event_zip
+router.route('/zip/:event_zip')
+	.get(eventController.getEventZip);
+
+//endpoint handlers for /events/:event_city
+router.route('/city/:event_city')
+	.get(eventController.getEventCity);
+
+//endpoint handlers for /events/:event_name
+router.route('/name/:event_name')
+	.get(eventController.getEventName);
+
 //endpoint handlers for /users
 router.route('/users')
 	.post(userController.postUsers)
 	.get(authController.isAuthenticated, userController.getUsers);
 
 //endpoint handlers for /users/:user_id
-router.route('/users/:user_id')
+router.route('/users/:username')
 	.get(authController.isAuthenticated, userController.getUser)
 	.delete(authController.isAuthenticated, userController.deleteUser);
 

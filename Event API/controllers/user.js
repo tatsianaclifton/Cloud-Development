@@ -1,13 +1,13 @@
 var User = require('../models/user');
 var Event = require('../models/event');
 
-//get one user, end point /api/users:user_id
+//get one user, end point /api/users:username
 exports.getUser = function (req, res, next){
 	
-	var id = req.params.user_id;
-	console.log(id);
+	var username = req.params.username;
+	console.log(username);
 
-	User.find({_id: id}, function (err, user){
+	User.find({username: username}, function (err, user){
 		if(err) return next(err);
 		res.json(user);
 	});
@@ -39,16 +39,16 @@ exports.postUsers = function(req, res, next){
 //delete a user, end point /api/users/:user_id
 exports.deleteUser = function(req, res, next){
 
-	var id = req.params.user_id;
+	var username = req.params.username;
 
-	User.remove({_id: id}, function(err){
+	User.remove({'username': username}, function(err){
 		if(err) return next(err);
 		res.json({message: "User was removed"});
 	});
 
-	Event.remove({owner_id: id}, function(err, events){
+	/*Event.remove({owner_id: id}, function(err, events){
 		if(err) return next(err);
 		res.json({message: "Events by this user were removed"});
-	});
+	});*/
 };
 
